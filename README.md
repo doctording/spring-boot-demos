@@ -23,13 +23,13 @@ mybatisGenerator生成运行(**注意源码中查看Gradle中的mybatisGenerator
 
 junit 测试
 
-![](./imgs/rs_junit.JPG)
+![](./imgs/rs_junit.jpg)
 
 Chrome装一个Rest Client插件，运行截图
 
-![](./imgs/rs_demo2.JPG)
+![](./imgs/rs_demo2.jpg)
 
-![](./imgs/rs_demo.JPG)
+![](./imgs/rs_demo.jpg)
 
 
 主要参考如下：(读者还是直接clone代码，对比看，运行比较好)
