@@ -38,7 +38,7 @@ Chrome装一个Rest Client插件，运行截图
 
 2. Inke.springboot-gradle + mybatis-generator-plugin[E/OL]https://blog.csdn.net/inke88/article/details/74766432
 
-3.wkCaesar.idea gradle之mybatis-generator使用[E/OL]https://blog.csdn.net/qq_36666651/article/details/79560228
+3. wkCaesar.idea gradle之mybatis-generator使用[E/OL]https://blog.csdn.net/qq_36666651/article/details/79560228
 
 百度搜索出来的问题：(建议google，文章只能参考，不要照着抄来做项目)
 
