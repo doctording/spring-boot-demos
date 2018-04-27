@@ -1,8 +1,8 @@
-所有的项目都基于idea gradle 来开发构建
+所有的项目都基于idea gradle + Spring-boot 来开发构建
 
 ---
 
-# code/demo项目
+# code/demo 项目
 
 * spring-boot 
 
@@ -56,7 +56,7 @@ Chrome装一个Rest Client插件，运行截图
 
 ---
 
-# code/demo2
+# code/demo2 项目
 
 在demo项目的基础上加上日志处理
 
@@ -89,4 +89,20 @@ Chrome装一个Rest Client插件，运行截图
 
 ---
 
+# code/demo3 项目
+
+* 一个工程(project), 多个模块(module)，主要是如下的三层
+
+1. demo-repo : mybatis generator 生成
+
+2. demo-service : 数据库服务层
+
+3. demo-api : control层 提供api
+
+gradle注意项目的依赖关系
+
+----
+
 # 
+
+
