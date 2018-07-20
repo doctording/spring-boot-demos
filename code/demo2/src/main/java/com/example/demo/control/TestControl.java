@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * @Author mubi
+ * @Date 2018/7/20 下午3:07
+ */
 @RestController
 public class TestControl {
 
@@ -15,17 +19,17 @@ public class TestControl {
     TbUserService tbUserService;
 
     @GetMapping(value = "/test")
-    public String getTest() throws Exception {
+    public String getTest() {
         return "hello test";
     }
 
     @GetMapping(value = "/test-service")
-    public String getTestService() throws Exception {
+    public String getTestService() {
         return tbUserService.fortest();
     }
 
     @GetMapping(value = "/test-all")
-    public List<TbUser> getTestAllUser() throws Exception {
+    public List<TbUser> getTestAllUser() {
         return tbUserService.getAllUser();
     }
 }

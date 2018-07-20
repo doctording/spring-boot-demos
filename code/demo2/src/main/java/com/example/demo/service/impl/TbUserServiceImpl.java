@@ -1,7 +1,6 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.repository.mapper.TbUserMapper;
-import com.example.demo.repository.model.TbPet;
 import com.example.demo.repository.model.TbUser;
 import com.example.demo.repository.model.TbUserExample;
 import com.example.demo.service.TbUserService;
@@ -9,9 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.text.StyledEditorKit;
 import java.util.List;
 
 @Service
