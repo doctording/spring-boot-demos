@@ -103,6 +103,51 @@ gradle注意项目的依赖关系
 
 ----
 
-# 
+# jacoco 自动化测试
+
+[用Gradle构建Spring Boot项目](https://www.cnblogs.com/davenkin/p/gradle-spring-boot.html)
+
+```
+apply plugin: 'jacoco'
+
+jacoco{
+	toolVersion = "0.8.1"
+	reportsDir = file("$buildDir/customJacocoReportDir")
+}
+
+jacocoTestReport {
+	reports {
+		xml.enabled false
+		html.enabled true
+	}
+}
+
+check.dependsOn jacocoTestReport
+```
+
+相关的运行命令（直接在demo2目录下）
+
+```bash
+$ gradle clean test
+
+$ bash gredlew build
+
+$ bash gradlew jacocoTestReport
+```
 
 
+
+* Test
+
+![](./imgs/jacoco_2.png)
+
+![](./imgs/jacoco_21.png)
+
+* jacoco
+
+![](./imgs/jacoco_1.png)
+
+![](./imgs/jacoco_12.png)
+
+
+# TODO

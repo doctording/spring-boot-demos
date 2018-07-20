@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.repository.model.TbUser;
 import com.example.demo.service.TbUserService;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -33,4 +34,26 @@ public class TbUserTest {
         });
         log.info("-------getAllUser--------");
     }
+
+    @Test
+    public void testGetById(){
+        log.info("-------get by id--------");
+        log.info("-------get by id--------");
+    }
+/*
+    @Test
+    public void testAdd(){
+
+        TbUser user = new TbUser();
+        user.setName("abc");
+        user.setUserid("0003");
+        boolean b = tbUserService.addUser(user);
+        Assert.assertTrue(b);
+    }
+
+    @Test
+    public void testDel(){
+        boolean b = tbUserService.deleteUserById(5);
+        Assert.assertTrue(b);
+    }*/
 }

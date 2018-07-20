@@ -68,6 +68,8 @@
 
         <table tableName="tb_user" domainObjectName="TbUser">
         </table>
+        <table tableName="tb_pet" domainObjectName="TbPet">
+        </table>
 
     </context>
 </generatorConfiguration>
