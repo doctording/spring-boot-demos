@@ -103,7 +103,7 @@ gradle注意项目的依赖关系
 
 ----
 
-# jacoco 自动化测试
+# jacoco 自动化测试 (demo2)
 
 [用Gradle构建Spring Boot项目](https://www.cnblogs.com/davenkin/p/gradle-spring-boot.html)
 
@@ -149,5 +149,18 @@ $ bash gradlew jacocoTestReport
 
 ![](./imgs/jacoco_12.png)
 
+
+# spring-boot 接入kafka(demo2)
+
+
+![](./imgs/kafka_log.png)
+
+![](./imgs/kafka_log2.png)
+
+* 参考
+
+[spring boot + kafka 使用详细步骤](https://blog.csdn.net/lcj_star/article/details/77337640)
+
+[SpringBoot Kafka 整合使用](https://blog.csdn.net/tzs_1041218129/article/details/78988439)
 
 # TODO
