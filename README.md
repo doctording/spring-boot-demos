@@ -152,6 +152,7 @@ $ bash gradlew jacocoTestReport
 
 # spring-boot 接入kafka(demo2)
 
+<a href="https://github.com/doctording/spring-boot-demos/commit/2bf044a3005e940f1b4e517fb16c74ea57e370f8" target="_blank">点击查看接入过程</a>
 
 ![](./imgs/kafka_log.png)
 
