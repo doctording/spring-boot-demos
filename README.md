@@ -4,7 +4,7 @@
 
 # code/demo 项目
 
-* spring-boot 
+* spring-boot
 
 * MySQL, MyBatis, mybatis Generator
 
@@ -164,4 +164,53 @@ $ bash gradlew jacocoTestReport
 
 [SpringBoot Kafka 整合使用](https://blog.csdn.net/tzs_1041218129/article/details/78988439)
 
-# TODO
+# Springboot + MockMvc 测试 Controller层 (demo项目)
+
+```java
+==============
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /test
+       Parameters = {}
+          Headers = {Content-Type=[application/json;charset=UTF-8], Accept=[application/json]}
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = com.example.demo.control.TestControl
+           Method = public java.lang.String com.example.demo.control.TestControl.getTest() throws java.lang.Exception
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8], Content-Length=[10]}
+     Content type = application/json;charset=UTF-8
+             Body = hello test
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+org.springframework.mock.web.MockHttpServletResponse@29eda4f8
+==============
+2018-07-29 23:51:43.323  INFO 41374 --- [       Thread-3] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@2d901eb0: startup date [Sun Jul 29 23:51:40 CST 2018]; root of context hierarchy
+
+Process finished with exit code 0
+
+```
+
+# Todo
