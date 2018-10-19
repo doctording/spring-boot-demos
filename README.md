@@ -1,10 +1,10 @@
-所有的项目都基于idea gradle + Spring-boot 来开发构建
+所有的项目都基于idea gradle + SpringBoot 来开发构建
 
 ---
 
 # code/demo 项目
 
-* spring-boot
+* SpringBoot
 
 * MySQL, MyBatis, mybatis Generator
 
@@ -125,7 +125,7 @@ jacocoTestReport {
 check.dependsOn jacocoTestReport
 ```
 
-相关的运行命令（直接在demo2目录下）
+相关的运行命令（直接在demo2目录下）
 
 ```bash
 $ gradle clean test
