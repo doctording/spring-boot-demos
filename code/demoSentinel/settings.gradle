@@ -1,0 +1,4 @@
+rootProject.name = 'demoSentinel'
+include 'demo-repo'
+include 'demo-service'
+include 'demo-api'
