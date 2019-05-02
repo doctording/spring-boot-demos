@@ -3,3 +3,13 @@
 源代码见`code`目录，以及源码写的`README.md`
 
 ---
+
+关键词
+
+* idea
+* Java8
+* SpringBoot
+* gradle
+* mybatis
+* alibaba druid
+* alibaba sentinel

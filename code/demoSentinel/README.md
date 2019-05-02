@@ -4,6 +4,8 @@
 
 http://localhost:22368/swagger-ui.html
 
+`curl -X GET "http://localhost:22368/test/user/all" -H "accept: */*"`
+
 * druid
 
 http://localhost:22368/druid/index.html

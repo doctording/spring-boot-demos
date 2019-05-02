@@ -109,8 +109,14 @@ subprojects {
 		compile "org.apache.logging.log4j:log4j-slf4j-impl:$log4jVersion"
 		compile "org.projectlombok:lombok:$lombokVersion"
 		compile "org.aspectj:aspectjweaver:1.8.6"
-
+		// swagger
 		compile "com.spring4all:swagger-spring-boot-starter:1.8.0.RELEASE"
+		// sentinel
+		compile "com.alibaba.csp:sentinel-core:1.6.0"
+		compile "com.alibaba.csp:sentinel-transport-simple-http:1.6.0"
+
+//		compile 'org.springframework.cloud:spring-cloud-starter-alibaba-sentinel:0.2.0.RELEASE'
+//		compile "com.alibaba.csp:sentinel-reactor-adapter:1.6.0"
 
 		runtime('mysql:mysql-connector-java')
 		testCompile "org.jmockit:jmockit:$jmockitVersion"

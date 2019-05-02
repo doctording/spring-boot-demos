@@ -19,11 +19,17 @@ public class DemoServiceApplicationTests {
 	@Autowired
 	TbUserService tbUserService;
 
+	/**
+	 * QPS限流测试
+	 * qps限流为20
+	 * 测试qps=60, 基本上是前20返回`HelloWorld`, 后面40返回`Blocked`
+	 */
 	@Test
 	public void testForTest(){
-		log.debug("===testForTest==========");
-		log.debug(tbUserService.forTest());
-		log.debug("===testForTest==========");
+		for(int i=0;i<60;i++) {
+			String limitTest = tbUserService.forTest();
+			log.info(String.format("%d---------limit:%s",i,limitTest));
+		}
 	}
 
 	@Test
