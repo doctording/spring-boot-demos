@@ -4,6 +4,7 @@ import com.spring4all.swagger.EnableSwagger2Doc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * @Author mubi
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableSwagger2Doc
 @SpringBootApplication
 @ComponentScan("com.example")
+@EnableScheduling
 public class DemoApiApplication {
 
 	public static void main(String[] args) {
