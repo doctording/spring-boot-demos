@@ -1,6 +1,6 @@
 所有项目demo都基于`idea gradle + SpringBoot`来开发构建
 
-源代码见`code`目录，以及源码写的`README.md`
+源代码见`code`目录，以及源码写的`README.md`，相关知识点如下
 
 ---
 
@@ -33,10 +33,57 @@
 @After: final增强，不管是抛出异常或者正常退出都会执行
 ```
 
-## 异步队列
+## 异步队列（见`code/demoSentinel`）
 
 * LinkedBlockingQueue
 
 * 线程池
+
+## 统一异常处理，统一返回，handler处理等(见`code/demoSentinel`）
+
+### 正确返回
+
+* request
+
+```java
+curl -X GET \
+  http://localhost:22368/test/permission \
+  -H 'Content-Type: application/json' \
+  -H 'Postman-Token: 6650b628-5e98-468b-ab09-c291d67810ff' \
+  -H 'cache-control: no-cache' \
+  -H 'token: token'
+```
+
+* response body
+
+```java
+{
+    "code": 0,
+    "message": "OK",
+    "data": "testNoPermission"
+}
+```
+
+### hanlder处理，无权限等情况
+
+* request
+
+```java
+curl -X GET \
+  http://localhost:22368/test/permission \
+  -H 'Content-Type: application/json' \
+  -H 'Postman-Token: 76f7da19-c150-4e96-9180-724128e56d94' \
+  -H 'cache-control: no-cache'
+```
+
+* response body
+
+```java
+{
+    "code": 2,
+    "message": "No permission",
+    "data": null
+}
+```
 
 ## TODO

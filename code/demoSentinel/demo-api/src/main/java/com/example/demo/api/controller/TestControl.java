@@ -3,6 +3,8 @@ package com.example.demo.api.controller;
 import com.example.demo.api.annotation.AfterLogger;
 import com.example.demo.api.annotation.HttpLogger;
 import com.example.demo.api.annotation.RecordLogger;
+import com.example.demo.api.annotation.Authenticate;
+import com.example.demo.api.response.ProResponse;
 import com.example.demo.repo.model.TbUser;
 import com.example.demoservice.service.TbUserService;
 import io.swagger.annotations.ApiOperation;
@@ -56,4 +58,12 @@ public class TestControl {
         }
         return "sleep2sec";
     }
+
+    @Authenticate(permission = true)
+    @ApiOperation("testNoPermission")
+    @GetMapping(value = "/permission")
+    public ProResponse<String> testNoPermission() {
+        return new ProResponse<>("testNoPermission");
+    }
+
 }
