@@ -94,4 +94,6 @@ curl -X GET \
 2. 漏斗
 3. 令牌桶
 
+参见: [限流的commits](https://github.com/doctording/springboot_gradle_demos/commit/0cc5f8f7eb0072da08bfed99bc716e5872e0bb19)
+
 ## TODO
