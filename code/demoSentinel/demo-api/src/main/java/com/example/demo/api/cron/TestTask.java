@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 public class TestTask {
     static SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss,SSS");
 
-    @Scheduled(cron ="*/3 * * * * ?")
+//    @Scheduled(cron ="*/3 * * * * ?")
     public void scheduled() {
         int number = 0;
         try{
