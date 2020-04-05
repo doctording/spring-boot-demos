@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * @Author mubi
  * @Date 2018/7/24 下午4:57
  */
-@Component
+//@Component
 public class KafkaReceiver {
 
     final Logger log = LoggerFactory.getLogger(this.getClass());
