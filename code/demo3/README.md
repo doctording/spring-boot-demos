@@ -34,7 +34,7 @@ jacocoTestReport {
 check.dependsOn jacocoTestReport
 ```
 
-相关的运行命令（直接在demo2目录下）
+相关的运行命令（直接在demo2目录下）
 
 ```bash
 $ gradle clean test
