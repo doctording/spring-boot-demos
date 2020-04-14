@@ -25,4 +25,10 @@ public class TbUserServiceImpl implements TbUserService{
         List<TbUser> userList = tbUserMapper.selectByExample(new TbUserExample());
         return userList;
     }
+
+    @Override
+    public TbUser getById(Integer id) {
+        System.out.println("get by id:" + id + " " + System.currentTimeMillis());
+        return tbUserMapper.selectByPrimaryKey(id);
+    }
 }

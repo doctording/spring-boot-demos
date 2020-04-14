@@ -9,4 +9,6 @@ public interface TbUserService {
     String fortest();
 
     List<TbUser> getAllUser();
+
+    TbUser getById(Integer id);
 }

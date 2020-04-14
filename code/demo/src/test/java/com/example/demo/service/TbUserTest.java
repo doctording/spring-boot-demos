@@ -26,4 +26,11 @@ public class TbUserTest {
         });
         System.out.println("==============");
     }
+
+    @Test
+    public void testGetUserById(){
+        Integer id= 1;
+        TbUser user = tbUserService.getById(id);
+        System.out.println(user);
+    }
 }

@@ -4,6 +4,7 @@ import com.example.demo.repository.model.TbUser;
 import com.example.demo.service.TbUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -28,4 +29,10 @@ public class TestControl {
     public List<TbUser> getTestAllUser() throws Exception {
         return tbUserService.getAllUser();
     }
+
+    @GetMapping(value = "/user/get/{uid}")
+    public TbUser getUserById(@PathVariable Integer uid) throws Exception {
+        return tbUserService.getById(uid);
+    }
+
 }
