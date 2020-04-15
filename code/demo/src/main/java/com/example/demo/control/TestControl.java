@@ -35,8 +35,11 @@ public class TestControl {
         return tbUserService.getById(uid);
     }
 
+    /**
+     * curl -X GET http://localhost:8080/user/name/cache/1
+     */
     @GetMapping(value = "/user/name/cache/{uid}")
-    public String getUserCaheById(@PathVariable Integer uid) throws Exception {
+    public String getUserCacheById(@PathVariable Integer uid) throws Exception {
         return tbUserService.getNameCacheById(uid);
     }
 

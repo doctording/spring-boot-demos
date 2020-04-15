@@ -1,10 +1,13 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.component.BloomFilterHelper;
+import com.example.demo.component.RedisService;
 import com.example.demo.repository.mapper.TbUserMapper;
 import com.example.demo.repository.model.TbUser;
 import com.example.demo.repository.model.TbUserExample;
 import com.example.demo.service.TbUserService;
 import com.example.demo.utils.RedisStringUtil;
+import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,9 +45,19 @@ public class TbUserServiceImpl implements TbUserService{
         return null;
     }
 
+    @Autowired
+    private RedisService redisService;
+
+    @Autowired
+    private BloomFilterHelper bloomFilterHelper;
+
     @Override
     public String getNameCacheById(Integer id) {
         String key = String.valueOf(id);
+        Boolean inBloomFilter = redisService.includeByBloomFilter(bloomFilterHelper, "bloom", key);
+        if(! inBloomFilter){
+            return "bloomFilter无";
+        }
         if(RedisStringUtil.existRedisKey(key)){
             // 访问缓存
             System.out.println("get from redis " + System.currentTimeMillis());
@@ -54,11 +67,11 @@ public class TbUserServiceImpl implements TbUserService{
             String name = getNameById(id);
             if(name == null){
                 // 数据库中没有
-                return "无";
+                return "数据库无";
             }else {
                 // 数据库中有,设置缓存
-                int sec = 60;
-                RedisStringUtil.setRedisKey(key, name, sec);
+//                int sec = 60;
+                RedisStringUtil.setRedisKey(key, name);
                 return name;
             }
         }

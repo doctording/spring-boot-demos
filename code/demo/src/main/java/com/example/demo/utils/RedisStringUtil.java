@@ -25,9 +25,9 @@ public final class RedisStringUtil {
         return jedis.set(key,value);
     }
 
-    public static String setRedisKey(String key, String value, Integer sec){
-        Jedis jedis = JedisUtil.getJedis();
-        return jedis.set(key, value, "NX", "EX", sec);
-    }
+//    public static String setRedisKey(String key, String value, Integer sec){
+//        Jedis jedis = JedisUtil.getJedis();
+//        return jedis.set(key, value, "NX", "EX", sec);
+//    }
 
 }
