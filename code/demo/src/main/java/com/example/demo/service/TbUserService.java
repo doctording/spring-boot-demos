@@ -11,4 +11,9 @@ public interface TbUserService {
     List<TbUser> getAllUser();
 
     TbUser getById(Integer id);
+
+    String getNameById(Integer id);
+
+    String getNameCacheById(Integer id);
+
 }

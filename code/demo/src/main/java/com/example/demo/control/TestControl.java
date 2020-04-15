@@ -35,4 +35,9 @@ public class TestControl {
         return tbUserService.getById(uid);
     }
 
+    @GetMapping(value = "/user/name/cache/{uid}")
+    public String getUserCaheById(@PathVariable Integer uid) throws Exception {
+        return tbUserService.getNameCacheById(uid);
+    }
+
 }
