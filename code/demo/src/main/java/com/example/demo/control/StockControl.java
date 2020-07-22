@@ -7,10 +7,15 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
  * redis： https://redis.io/， https://try.redis.io/
+ *
+ * setnx key val （set if not exist x）
+ *  当key不存在，设置key,val
+ *  当key存在，不做任何操作
  */
 @RestController
 public class StockControl {
@@ -22,11 +27,11 @@ public class StockControl {
 
     private String stockReduce(){
         int stock = Integer.parseInt(stringRedisTemplate.opsForValue().get("stock"));
-
         if (stock > 0) {
             int realStock = stock - 1;
             try {
-                TimeUnit.MILLISECONDS.sleep(50);
+                Random r = new Random();
+                TimeUnit.MILLISECONDS.sleep(r.nextInt(100));
             } catch (Exception e) {
 
             }
@@ -49,6 +54,30 @@ public class StockControl {
         synchronized (this) {
             return stockReduce();
         }
+    }
+
+    @PostMapping(value = "/deduct_stock_lock")
+    public String deductStockLock() throws Exception {
+        // setnx，redis单线程
+        String lockKey = "lockKey";
+        String lockVal = "lockVal";
+        // 如下两句要原子操作
+//        Boolean setOk = stringRedisTemplate.opsForValue().setIfAbsent(lockKey, lockVal);
+//        stringRedisTemplate.expire(lockKey, 10 , TimeUnit.SECONDS); // 设置过期时间
+        Boolean setOk = stringRedisTemplate.opsForValue().setIfAbsent(lockKey, lockVal, 10, TimeUnit.SECONDS);
+        if (!setOk) {
+            throw new Exception("业务繁忙，请稍后再试");
+        }
+
+        String retVal;
+        try {
+            // 只有一个线程能执行成功,可能有业务异常抛出来，可能宕机等等；但无论如何要释放锁
+            retVal = stockReduce();
+        } finally {
+            // 可能失败
+            stringRedisTemplate.delete(lockKey);
+        }
+        return retVal;
     }
 
 }
