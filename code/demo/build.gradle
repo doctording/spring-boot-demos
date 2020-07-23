@@ -5,11 +5,8 @@ buildscript {
 		druidVersion = '1.0.14'
 	}
 	repositories {
-		maven {
-			url 'https://maven.aliyun.com/repository/public/'
-		}
-		mavenLocal()
-		mavenCentral()
+		maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+//		mavenCentral()
 		maven {
 			url "https://plugins.gradle.org/m2/"
 		}
@@ -101,7 +98,17 @@ dependencies {
 	compile group: 'org.apache.zookeeper', name: 'zookeeper', version: '3.4.12'
 	compile 'org.apache.curator:curator-recipes:4.0.0'
 
+	// https://mvnrepository.com/artifact/com.google.guava/guava
+	compile group: 'com.google.guava', name: 'guava', version: '28.2-jre'
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis', version: '2.3.1.RELEASE'
+	compile 'redis.clients:jedis:2.9.0'
+	compile group: 'org.springframework.data', name: 'spring-data-redis', version: '2.1.0.RELEASE'
+
+	// https://mvnrepository.com/artifact/org.redisson/redisson
+	compile group: 'org.redisson', name: 'redisson', version: '3.13.2'
+
 	runtime('mysql:mysql-connector-java')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile("org.springframework.boot:spring-boot-starter-test")
 	testCompile "junit:junit:$junitVersion"
 }
