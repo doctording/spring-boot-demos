@@ -1,5 +1,7 @@
 package com.example.demo.control;
 
+import org.redisson.Redisson;
+import org.redisson.api.RLock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Random;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -60,11 +63,11 @@ public class StockControl {
     public String deductStockLock() throws Exception {
         // setnx，redis单线程
         String lockKey = "lockKey";
-        String lockVal = "lockVal";
+        String clientId = UUID.randomUUID().toString();
         // 如下两句要原子操作
 //        Boolean setOk = stringRedisTemplate.opsForValue().setIfAbsent(lockKey, lockVal);
 //        stringRedisTemplate.expire(lockKey, 10 , TimeUnit.SECONDS); // 设置过期时间
-        Boolean setOk = stringRedisTemplate.opsForValue().setIfAbsent(lockKey, lockVal, 10, TimeUnit.SECONDS);
+        Boolean setOk = stringRedisTemplate.opsForValue().setIfAbsent(lockKey, clientId, 10, TimeUnit.SECONDS);
         if (!setOk) {
             throw new Exception("业务繁忙，请稍后再试");
         }
@@ -75,7 +78,27 @@ public class StockControl {
             retVal = stockReduce();
         } finally {
             // 可能失败
-            stringRedisTemplate.delete(lockKey);
+            if (clientId.equals(stringRedisTemplate.opsForValue().get(lockKey))) {
+                stringRedisTemplate.delete(lockKey);
+            }
+        }
+        return retVal;
+    }
+
+    @Autowired
+    private Redisson redisson;
+
+    @PostMapping(value = "/deduct_stock_redisson")
+    public String deductStockRedisson() throws Exception {
+        String lockKey = "lockKey";
+        RLock rLock = redisson.getLock(lockKey);
+        String retVal;
+        try {
+            rLock.lock();
+            // 只有一个线程能执行成功,可能有业务异常抛出来，可能宕机等等；但无论如何要释放锁
+            retVal = stockReduce();
+        } finally {
+            rLock.unlock();
         }
         return retVal;
     }
