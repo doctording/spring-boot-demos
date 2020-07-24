@@ -1,5 +1,7 @@
 package com.example.demo.control;
 
+import org.apache.curator.framework.CuratorFramework;
+import org.apache.curator.framework.recipes.locks.InterProcessMutex;
 import org.redisson.Redisson;
 import org.redisson.api.RLock;
 import org.slf4j.Logger;
@@ -99,6 +101,25 @@ public class StockControl {
             retVal = stockReduce();
         } finally {
             rLock.unlock();
+        }
+        return retVal;
+    }
+
+    @Autowired
+    private CuratorFramework curatorFramework;
+
+    @PostMapping(value = "/deduct_stock_zk")
+    public String deductStockZk() throws Exception {
+        String path = "/stock";
+        InterProcessMutex interProcessMutex = new InterProcessMutex(curatorFramework, path);
+        String retVal;
+        try {
+            interProcessMutex.acquire();
+            retVal = stockReduce();
+        } catch (Exception e) {
+            throw new Exception("lock error");
+        } finally {
+            interProcessMutex.release();
         }
         return retVal;
     }
