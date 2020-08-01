@@ -2,7 +2,6 @@ package com.example.demo.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -11,7 +10,7 @@ import java.time.format.DateTimeFormatter;
  * @Author mubi
  * @Date 2018/7/24 下午4:49
  */
-@Component
+//@Component
 public class KafkaSender {
 
     @Autowired

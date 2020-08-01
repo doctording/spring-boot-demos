@@ -33,9 +33,9 @@ public class TestControl {
     public String getTestCost() {
         log.info("start");
         long t1 = System.currentTimeMillis();
-        try{
+        try {
             TimeUnit.SECONDS.sleep(20);
-        }catch (Exception e){
+        } catch (Exception e) {
             log.error("getTestCost error", e);
         }
         long t2 = System.currentTimeMillis();
